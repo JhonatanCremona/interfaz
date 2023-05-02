@@ -11,7 +11,7 @@ import { EtiquetaContextProvaider } from './components/context/EtiquetaContext';
 import { Contacts } from './components/Contact';
 import { Layout } from './components/Layaout';
 import { Footer } from './components/Footer';
-import { ListaProducto } from './components/listaProducto/listaProducto';
+import { ListaProducto } from './components/listaProducto/ListaProducto';
 
 function App() {
 

@@ -39,7 +39,7 @@ export const ListaEtiqueta = () => {
 
     useEffect(()=>{
         if (etiquetaDelete.estado === true) {
-            const apiUrl = `http://localhost:5000/api/${etiquetaDelete.id}`
+            const apiUrl = `http://localhost:5000/etiquetas/${etiquetaDelete.id}`
             const settings = {
                 method: "Delete",
             }
@@ -52,31 +52,19 @@ export const ListaEtiqueta = () => {
                     borderTop : '5px solid red',
                     }
             })
-            setEtiquetaDelete({
-                id:"",
-                name:"",
-                estado:false
-            })
-            
-
+            setEtiquetaDelete({id:"",name:"",estado:false})
         }
     },[etiquetaDelete.estado]);
 
     useEffect(()=> {
         if (etiquetaPrint.estado === true) {
             console.log("Me ejecute");
-            const apiUrl = `http://localhost:5000/api/imprimir/${etiquetaPrint.id}`
+            const apiUrl = `http://localhost:5000/etiquetas/imprimir/${etiquetaPrint.id}`
             const settings = {
                 method: "GET",
             }
             fetchMethod(apiUrl, settings)
-            .then(response => toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
-                style: {
-                    borderTop : '5px solid green',
-                    fontSize: "20px",
-                    transition: "all 0.3s"
-                    }
-            }))
+            .then(response => console.log(response.json))
             .catch((error) => {
                 toast.error(`Sin conexión al server ... 🖶`, {
                     style: {
@@ -87,7 +75,15 @@ export const ListaEtiqueta = () => {
                 })
                 return console.log(`Error Capturado Fuera de la función async: ${error}`)
             });
-            SetEtiquetaPrint(false)
+
+            toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
+                style: {
+                    borderTop : '5px solid green',
+                    fontSize: "20px",
+                    transition: "all 0.3s"
+                    }
+            })
+            SetEtiquetaPrint({id:"",estado:false})
         }
     }, [etiquetaPrint.estado])
     

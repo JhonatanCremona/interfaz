@@ -1,0 +1,9 @@
+.listaProducto {
+    border: 1px solid tomato;
+}
+.listaProducto ul {
+    display: flex;
+    list-style: none;
+    background: #262626;
+    
+}

@@ -5,9 +5,8 @@ export const EtiquetaContextProvaider = ({ children}) => {
     const [etiqueta, setEtiqueta] = useState([]);
     const [producto, setProducto] = useState([]);
 
-    const API = "http://localhost:5000/api/listar";
-    const apiProducto = "http://localhost:5000/pruductos/listar"
-    const example  = "https://dummyjson.com/products"
+    const API = "http://localhost:5000/etiquetas/listar";
+    const apiProducto = "http://localhost:5000/productos";
  
     const options = {
         method: "GET",
@@ -19,13 +18,12 @@ export const EtiquetaContextProvaider = ({ children}) => {
             .then(response => response.json()) 
             .then(json => setEtiqueta(json))
             .catch(err => console.log(err));
-
         fetch(apiProducto, options)
             .then(response => response.json()) 
             .then(json => setProducto(json))
             .catch(err => console.log(err));
-
     },[]);
+    console.log({producto});
     console.log({etiqueta});
     const ordernarId = etiqueta.sort((a, b) => a.id - b.id)
 
